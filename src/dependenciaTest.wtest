@@ -1,0 +1,52 @@
+import dependencia.*
+import rodados.*
+
+describe "test de dependencia" {
+	
+	test "deportes y cultura" {
+		var cachito = new ChevroletCorsa()
+		cachito.color("rojo")
+
+        var auto1 = new ChevroletCorsa()
+        auto1.color("azul")
+        
+        var auto2 = new ChevroletCorsa()
+        auto2.color("verde")
+
+        var kwid = new RenaultKwid()
+        //kwid.tanqueAdicional()
+        
+        var autoEspe = new AutosEspeciales()
+        autoEspe.capacidad(5)
+        autoEspe.velocidadMaxima(160)
+        autoEspe.peso(1200)
+        autoEspe.color("beige")
+        
+        
+        var kwid1 = new RenaultKwid()
+        var kwid2 = new RenaultKwid()
+        var kwid3 = new RenaultKwid()
+        kwid3.tanqueAdicional(false)
+       
+       
+        var deporte = new Dependencia()
+        deporte.empleados(45)
+        deporte.agregarAFlota(cachito)
+        deporte.agregarAFlota(auto1)
+        deporte.agregarAFlota(auto2)
+        deporte.agregarAFlota(kwid)
+        deporte.agregarAFlota(autoEspe)
+        
+        var cultura = new Dependencia()
+        cultura.empleados(31)
+        cultura.agregarAFlota(cachito)
+        cultura.agregarAFlota(kwid1)
+        cultura.agregarAFlota(kwid2)
+        cultura.agregarAFlota(kwid3)
+        cultura.agregarAFlota(trafic)
+        trafic.interior(interiorPopular)
+        trafic.motor(motorBataton)
+}
+	    	
+		
+}
