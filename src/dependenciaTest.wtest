@@ -1,52 +1,60 @@
 import dependencia.*
 import rodados.*
+import pedidos.*
 
 describe "test de dependencia" {
-	
+
+	const cachito = new ChevroletCorsa(color = "rojo")
+
 	test "deportes y cultura" {
-		var cachito = new ChevroletCorsa()
-		cachito.color("rojo")
+		const auto1 = new ChevroletCorsa()
+		auto1.color("azul")
+		const auto2 = new ChevroletCorsa()
+		auto2.color("verde")
+		const kwid = new RenaultKwid()
+		const autoEspe = new AutosEspeciales()
+		autoEspe.capacidad(5)
+		autoEspe.velocidadMaxima(160)
+		autoEspe.peso(1200)
+		autoEspe.color("beige")
+		const kwid1 = new RenaultKwid()
+		const kwid2 = new RenaultKwid()
+		const kwid3 = new RenaultKwid()
+		kwid3.tanqueAdicional(false)
+		const deporte = new Dependencia()
+		deporte.empleados(45)
+		deporte.agregarAFlota(cachito)
+		deporte.agregarAFlota(auto1)
+		deporte.agregarAFlota(auto2)
+		deporte.agregarAFlota(kwid)
+		deporte.agregarAFlota(autoEspe)
+		assert.equals(6450, deporte.pesoTotalFLota())
+		assert.equals(true, deporte.estaBienEquipada())
+		assert.equals(7, deporte.capacidadTotalEnColor())
+		assert.equals("beige", deporte.colorDelRodadoMasRapido())
+		assert.equals(true, deporte.esGrande())
+		assert.equals(25, deporte.capacidadFaltante())
+		const cultura = new Dependencia()
+		cultura.empleados(31)
+		cultura.agregarAFlota(cachito)
+		cultura.agregarAFlota(kwid1)
+		cultura.agregarAFlota(kwid2)
+		cultura.agregarAFlota(kwid3)
+		cultura.agregarAFlota(trafic)
+		trafic.interior(interiorPopular)
+		trafic.motor(motorBataton)
+	}
 
-        var auto1 = new ChevroletCorsa()
-        auto1.color("azul")
-        
-        var auto2 = new ChevroletCorsa()
-        auto2.color("verde")
+	test "modelo de pedidos" {
+		const viajeA = new Viaje()
+		viajeA.distancia(960)
+		viajeA.tiempoMaximo(8)
+		viajeA.cantPasajeros(4)
+		viajeA.colorIncompatible(#{ "azul", "negro" })
+		assert.equals(true, viajeA.puedeSatisfacer(cachito))
+		viajeA.colorIncompatible().add("rojo")
+		assert.equals(false, viajeA.puedeSatisfacer(cachito))
+	}
 
-        var kwid = new RenaultKwid()
-        //kwid.tanqueAdicional()
-        
-        var autoEspe = new AutosEspeciales()
-        autoEspe.capacidad(5)
-        autoEspe.velocidadMaxima(160)
-        autoEspe.peso(1200)
-        autoEspe.color("beige")
-        
-        
-        var kwid1 = new RenaultKwid()
-        var kwid2 = new RenaultKwid()
-        var kwid3 = new RenaultKwid()
-        kwid3.tanqueAdicional(false)
-       
-       
-        var deporte = new Dependencia()
-        deporte.empleados(45)
-        deporte.agregarAFlota(cachito)
-        deporte.agregarAFlota(auto1)
-        deporte.agregarAFlota(auto2)
-        deporte.agregarAFlota(kwid)
-        deporte.agregarAFlota(autoEspe)
-        
-        var cultura = new Dependencia()
-        cultura.empleados(31)
-        cultura.agregarAFlota(cachito)
-        cultura.agregarAFlota(kwid1)
-        cultura.agregarAFlota(kwid2)
-        cultura.agregarAFlota(kwid3)
-        cultura.agregarAFlota(trafic)
-        trafic.interior(interiorPopular)
-        trafic.motor(motorBataton)
 }
-	    	
-		
-}
+
